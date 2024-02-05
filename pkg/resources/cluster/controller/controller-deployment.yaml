@@ -25,7 +25,6 @@ spec:
             - runMigration
             - --log-level=DEBUG
             - --log-level-linstor=DEBUG
-            - -d
             - -p
           env:
             - name: K8S_AWAIT_ELECTION_ENABLED
@@ -62,7 +61,6 @@ spec:
             - startController
             - --log-level=DEBUG
             - --log-level-linstor=DEBUG
-            - -d
             - -p
           env:
             - name: JAVA_OPTS
