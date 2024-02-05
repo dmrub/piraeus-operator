@@ -118,7 +118,7 @@ spec:
           #emptyDir: { }
           hostPath:
             path: "/var/log/linstor-controller"
-            type: Directory
+            type: DirectoryOrCreate
         - name: tmp
           emptyDir: { }
         - name: migration
