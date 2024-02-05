@@ -23,6 +23,10 @@ spec:
           image: linstor-controller
           args:
             - runMigration
+            - --log-level=DEBUG
+            - --log-level-linstor=DEBUG
+            - -d
+            - -p
           env:
             - name: K8S_AWAIT_ELECTION_ENABLED
               value: "1"
@@ -56,6 +60,10 @@ spec:
           image: linstor-controller
           args:
             - startController
+            - --log-level=DEBUG
+            - --log-level-linstor=DEBUG
+            - -d
+            - -p
           env:
             - name: JAVA_OPTS
               value: '-Djdk.tls.acknowledgeCloseNotify=true'
@@ -107,7 +115,10 @@ spec:
           configMap:
             name: linstor-controller-config
         - name: var-log-linstor-controller
-          emptyDir: { }
+          #emptyDir: { }
+          hostPath:
+            path: "/var/log/linstor-controller"
+            type: Directory
         - name: tmp
           emptyDir: { }
         - name: migration
